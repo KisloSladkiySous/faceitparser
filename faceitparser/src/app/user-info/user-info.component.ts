@@ -43,6 +43,8 @@ export class UserInfoComponent {
   destroyRef = inject(DestroyRef)
   socketData$ = new Subject<ISocketResponce | null>();
   elo = signal(0)
+  hidden = true
+  perdezh!:any
   elo_change!:number
   constructor(private socket: SocketService) {
     this.socket.connect();
@@ -51,9 +53,10 @@ export class UserInfoComponent {
       .pipe(
         filter((res) => res.nickname === String(this.route.snapshot.paramMap.get('id'))),
         tap((res) => {
+          this.perdezh = res
           this.elo.set(Number(res.last_elo))
           this.socketData$.next(res)
-
+          this.hidden = false
           let current_elo = signal(Number(res.elo_now))
           let sub = new Subject()
           interval(150).pipe(
@@ -75,6 +78,7 @@ export class UserInfoComponent {
         takeUntilDestroyed(this.destroyRef)
       )
       .subscribe(() => {
+        this.hidden = true
         this.socketData$.next(null);
       });
   }
