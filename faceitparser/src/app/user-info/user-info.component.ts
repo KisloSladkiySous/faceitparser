@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, DestroyRef, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { Subject, debounceTime, filter, interval, takeUntil, tap } from 'rxjs';
@@ -41,6 +41,7 @@ export interface ISocketResponce {
 export class UserInfoComponent {
   route = inject(ActivatedRoute);
   destroyRef = inject(DestroyRef)
+  cdr = inject(ChangeDetectorRef)
   socketData$ = new Subject<ISocketResponce | null>();
   elo = signal(0)
   hidden = true
@@ -59,6 +60,10 @@ export class UserInfoComponent {
           this.hidden = false
           let current_elo = signal(Number(res.elo_now))
           let sub = new Subject()
+          console.log(this.perdezh);
+          // [ngClass]="{'hidden': hidden}"
+          this.cdr.detectChanges()
+          
           interval(150).pipe(
             takeUntil(sub)
           ).subscribe(() => {

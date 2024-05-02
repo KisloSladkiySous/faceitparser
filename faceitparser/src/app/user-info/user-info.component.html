@@ -31,30 +31,30 @@
     </div>
     
    } -->
-    <div class="layout" [@fadeInOut] [ngClass]="{'hidden': hidden}">
-        <h1 class="user_nickname">{{perdezh.nickname}}</h1>
-        <img [src]="perdezh.avatar" alt="Avatar">
+    <div class="layout" [@fadeInOut] >
+        <h1 class="user_nickname">{{perdezh?.nickname}}</h1>
+        <img [src]="perdezh?.avatar" alt="Avatar">
         <p class="user_elo"> ELO: {{elo()}}</p>
         <p [ngClass]="{
-                red: perdezh.elo_per_match < 0,
-                green: perdezh.elo_per_match > 0
-            }"> {{ perdezh.elo_per_match >= 0 ? '+'  : ''}}{{perdezh.elo_per_match}} elo </p>
+                red: perdezh?.elo_per_match < 0,
+                green: perdezh?.elo_per_match > 0
+            }"> {{ perdezh?.elo_per_match >= 0 ? '+'  : ''}}{{perdezh?.elo_per_match}} elo </p>
         <div class="user_stats">
             <div class="user_stats__kills">
                 <p>Kills</p>
-                    <p>{{perdezh.kills}}</p>
+                    <p>{{perdezh?.kills}}</p>
                 </div>
                 <div class="user_stats__death">
                     <p>Death</p>
-                    <p>{{perdezh.deaths}}</p>
+                    <p>{{perdezh?.deaths}}</p>
                 </div>
                 <div class="user_stats__kd">
                     <p>K/D</p>
-                    <p>{{perdezh.kd_ratio}}</p>
+                    <p>{{perdezh?.kd_ratio}}</p>
                 </div>
                 <div class="user_stats__kr">
                     <p>K/R</p>
-                    <p>{{perdezh.kr_ratio}}</p>
+                    <p>{{perdezh?.kr_ratio}}</p>
                 </div>
             </div>
         </div>
