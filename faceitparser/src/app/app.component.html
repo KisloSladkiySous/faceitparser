@@ -1,1 +1,34 @@
+<div class="div">
+    <p>SANYA</p>
+   </div>
+@if((socketData$ | async); as info) {
+<div class="layout" [@fadeInOut]>
+    <h1 class="user_nickname">{{info.nickname}}</h1>
+    <img [src]="info.avatar" alt="Avatar">
+    <p class="user_elo"> ELO: {{elo()}}</p>
+    <p [ngClass]="{
+            red: info.elo_per_match < 0,
+            green: info.elo_per_match > 0
+        }"> {{ info.elo_per_match >= 0 ? '+'  : ''}}{{info.elo_per_match}} elo </p>
+    <div class="user_stats">
+        <div class="user_stats__kills">
+            <p>Kills</p>
+                <p>{{info.kills}}</p>
+            </div>
+            <div class="user_stats__death">
+                <p>Death</p>
+                <p>{{info.deaths}}</p>
+            </div>
+            <div class="user_stats__kd">
+                <p>K/D</p>
+                <p>{{info.kd_ratio}}</p>
+            </div>
+            <div class="user_stats__kr">
+                <p>K/R</p>
+                <p>{{info.kr_ratio}}</p>
+            </div>
+        </div>
+    </div>
+    
+   }
 <router-outlet></router-outlet>

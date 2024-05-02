@@ -1,0 +1,52 @@
+img    {
+    height:150px;
+    width:150px;
+    border-radius: 50%;
+}
+.user_nickname {
+    font-size: 55px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Улучшенный шрифт */
+    font-weight: bold;
+    color: white;
+}
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    justify-items: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    font-family: Arial, sans-serif;
+    background-size: cover;
+}
+@keyframes ani {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+.user_stats {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20vh;
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+p { 
+    color: white;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Улучшенный шрифт */
+    font-size: 40px;
+}
+.red {
+    color:red
+}
+.green { 
+    color: green;
+}
+.div {
+    background-color: red;
+}
+.hidden {
+    display:none
+}
